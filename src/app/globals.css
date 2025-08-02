@@ -7,13 +7,13 @@
 
 /* Font configuration */
 @theme inline {
-  --font-sans: var(--font-ubuntu);
+  --font-sans: var(--font-signika);
   --font-mono: var(--font-ubuntu-mono);
 }
 
 /* Apply theme colors to body */
 @theme inline {
-  --font-sans: var(--font-ubuntu);
+  --font-sans: var(--font-signika);
   --font-mono: var(--font-ubuntu-mono);
 }
 
@@ -77,8 +77,8 @@
 /* Global font configuration */
 * {
   font-family:
-    var(--font-ubuntu),
-    "Ubuntu",
+    var(--font-signika),
+    "Signika",
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
@@ -91,8 +91,8 @@
 
 body {
   font-family:
-    var(--font-ubuntu),
-    "Ubuntu",
+    var(--font-signika),
+    "Signika",
     system-ui,
     -apple-system,
     BlinkMacSystemFont,

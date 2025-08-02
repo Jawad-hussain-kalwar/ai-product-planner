@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Ubuntu, Ubuntu_Mono } from "next/font/google";
+import { Signika, Ubuntu_Mono } from "next/font/google";
 import { Providers } from "./providers";
 import { Navigation } from "@/components/navigation";
 import { AnimatedBubbleBackground } from "@/components/ui/animated-bubble-background";
 import "./globals.css";
 
-const ubuntu = Ubuntu({
-  variable: "--font-ubuntu",
+const signika = Signika({
+  variable: "--font-signika",
   subsets: ["latin"],
   display: "swap", // Improves loading performance
-  weight: ["300", "400", "500", "700"], // Ubuntu available weights
+  weight: ["300", "400", "500", "600", "700"], // Signika available weights
 });
 
 const ubuntuMono = Ubuntu_Mono({
@@ -31,7 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${ubuntu.variable} ${ubuntuMono.variable} antialiased`}>
+      <body
+        className={`${signika.variable} ${ubuntuMono.variable} antialiased`}
+      >
         <Providers>
           {/* Animated Bubble Background for entire page */}
           <AnimatedBubbleBackground

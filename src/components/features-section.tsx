@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardBody, CardHeader, Button } from "@/components/ui";
+import { Card, CardBody, CardHeader } from "@/components/ui";
 import { GradientText } from "@/components/ui/animated-gradient-text";
 
 // Icon components
@@ -119,24 +119,6 @@ const DownloadIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M5 12h14" />
-    <path d="m12 5 7 7-7 7" />
-  </svg>
-);
-
 const features = [
   {
     icon: SparklesIcon,
@@ -211,7 +193,7 @@ export function FeaturesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <Card
               key={index}
@@ -234,32 +216,6 @@ export function FeaturesSection() {
             </Card>
           ))}
         </div>
-
-        {/* Call to Action */}
-        <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 backdrop-blur-sm">
-          <CardBody className="text-center p-8">
-            <h3 className="text-2xl font-bold mb-4">
-              Ready to transform your ideas?
-            </h3>
-            <p className="text-default-600 mb-6 max-w-md mx-auto">
-              Join developers and product teams who are building better products
-              with structured planning.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                color="primary"
-                size="lg"
-                endContent={<ArrowRightIcon />}
-                className="font-semibold"
-              >
-                Start Your First Project
-              </Button>
-              <Button variant="bordered" size="lg" className="font-semibold">
-                View Demo
-              </Button>
-            </div>
-          </CardBody>
-        </Card>
       </div>
     </section>
   );

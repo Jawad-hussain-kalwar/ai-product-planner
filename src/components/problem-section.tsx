@@ -18,75 +18,81 @@ import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack";
 const ALL_PROBLEMS = [
   {
     id: "Problems -1",
-    title: "Research and Analysis",
+    title: "Scattered Ideas Without Structure",
     description:
-      "With your vision in mind, we enter the Research and Analysis phase. Here, we examine your competitors, industry trends, and user preferences. This informed approach ensures your website stands out and provides an excellent user experience.",
+      "You have brilliant product ideas floating around in your head, scattered across notes, sketches, and conversations. Without a structured framework, these ideas remain fragmented and impossible to turn into actionable development plans.",
   },
   {
     id: "Problems -2",
-    title: "Wireframing and Prototyping",
+    title: "Time-Consuming Planning Process",
     description:
-      "We move on to Wireframing and Prototyping, where we create skeletal representations of your website's pages. These visual indigoprints allow us to test and refine the user experience before diving into design.",
+      "Traditional product planning takes weeks or months of back-and-forth meetings, documentation, and revisions. As a solo developer or small team, you can't afford to spend months planning when you could be building.",
   },
   {
     id: "Problems -3",
-    title: "Design Creation",
+    title: "Lack of Technical Specification Skills",
     description:
-      "Now, it's time for the Design Creation phase. Our talented designers bring your vision to life. We focus on aesthetics, ensuring your website not only looks stunning but also aligns perfectly with your brand identity.",
+      "You know what you want to build, but translating that vision into proper PRDs, technical specifications, and architecture documents feels overwhelming. The gap between idea and implementation seems impossible to bridge.",
   },
   {
     id: "Problems -4",
-    title: "Development and Testing",
+    title: "Feature Prioritization Paralysis",
     description:
-      "In the Development and Testing phase, our skilled developers turn designs into a fully functional website. Rigorous testing ensures everything works seamlessly, providing an exceptional user experience.",
+      "With limited time and resources, every feature decision matters. Without proven frameworks like RICE or MoSCoW, you're left guessing which features to build first, often leading to scope creep and missed deadlines.",
   },
   {
     id: "Problems -5",
-    title: "Launch and Support",
+    title: "Inconsistent Documentation Standards",
     description:
-      "Our commitment continues beyond launch. We offer post-launch support to address questions, provide assistance, and ensure your website remains updated and optimized. The Website Design Problems  isn't just about creating a website; it's about crafting a digital experience that resonates, engages, and converts.",
+      "Your project documentation is all over the place - some features are well-documented, others barely have notes. This inconsistency makes it impossible to maintain momentum or onboard collaborators effectively.",
   },
 ];
 
 const ProblemSection = () => {
   return (
-    <div className="container min-h-svh place-content-center bg-background px-6 text-foreground xl:px-12">
-      <div className="grid md:grid-cols-2 md:gap-8 xl:gap-12">
-        <div className="left-0 top-0 md:sticky md:h-svh md:py-12">
-          <h5 className=" text-xs uppercase tracking-wide">our Problems </h5>
-          <h2 className="mb-6 mt-4 text-4xl font-bold tracking-tight">
-            Planning your{" "}
-            <span className="text-primary">project development</span> journey
-          </h2>
-          <p className="max-w-prose text-sm">
-            Our journey begins with a deep dive into your vision. In the
-            Discovery phase, we engage in meaningful conversations to grasp your
-            brand identity, goals, and the essence you want to convey. This
-            phase sets the stage for all that follows.
-          </p>
-        </div>
-        <ContainerScroll className="min-h-[400vh] space-y-8 py-12">
-          {ALL_PROBLEMS.map((phase, index) => (
-            <CardSticky
-              key={phase.id}
-              index={index + 2}
-              className="rounded-2xl border p-8 shadow-md backdrop-blur-md"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <h2 className="my-6 text-2xl font-bold tracking-tighter">
-                  {phase.title}
-                </h2>
-                <h3 className="text-2xl font-bold text-primary">
-                  {String(index + 1).padStart(2, "0")}
-                </h3>
-              </div>
+    <section className="py-20 px-4 pt-20 bg-background text-foreground">
+      <div className="container mx-auto max-w-7xl">
+        <div className="min-h-[500vh]">
+          <div className="grid md:grid-cols-2 md:gap-8 xl:gap-12">
+            <div className="md:sticky md:top-1/2 md:-translate-y-1/2 md:h-fit md:py-12">
+              <h5 className=" text-xs uppercase tracking-wide">
+                the challenges
+              </h5>
+              <h2 className="mb-6 mt-4 text-4xl font-bold tracking-tight">
+                Why product planning{" "}
+                <span className="text-primary">feels impossible</span>
+              </h2>
+              <p className="max-w-prose text-sm">
+                Solo developers and indie hackers face unique challenges when
+                turning ideas into structured development plans. Traditional
+                planning methods are too slow, complex, and resource-intensive
+                for fast-moving teams who need to ship quickly.
+              </p>
+            </div>
+            <ContainerScroll className="space-y-8 py-12">
+              {ALL_PROBLEMS.map((phase, index) => (
+                <CardSticky
+                  key={phase.id}
+                  index={index + 2}
+                  className="rounded-2xl border p-8 shadow-md backdrop-blur-md"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <h2 className="my-6 text-2xl font-bold tracking-tighter">
+                      {phase.title}
+                    </h2>
+                    <h3 className="text-2xl font-bold text-primary">
+                      {String(index + 1).padStart(2, "0")}
+                    </h3>
+                  </div>
 
-              <p className="text-foreground">{phase.description}</p>
-            </CardSticky>
-          ))}
-        </ContainerScroll>
+                  <p className="text-foreground">{phase.description}</p>
+                </CardSticky>
+              ))}
+            </ContainerScroll>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

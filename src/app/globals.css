@@ -1,26 +1,821 @@
 @import "tailwindcss";
+@plugin './hero.ts';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* HeroUI theme source */
+@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
 
+/* Font configuration */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-ubuntu);
+  --font-mono: var(--font-ubuntu-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Apply theme colors to body */
+@theme inline {
+  --font-sans: var(--font-ubuntu);
+  --font-mono: var(--font-ubuntu-mono);
+}
+
+/* Tailwind v4 Animation Configuration */
+@theme inline {
+  /* Gradient animation keyframes */
+  --animate-gradient: gradient var(--animation-duration, 8s) linear infinite;
+
+  /* Animation duration custom property support */
+  --animation-duration: 8s;
+}
+
+/* ========================================
+   GLOBAL COLOR OVERRIDES
+   ======================================== */
+
+/* Override HeroUI secondary color to subtle teal/cyan */
+:root,
+[data-theme="light"] {
+  /* Light theme secondary color override - Subtle Teal */
+  --heroui-secondary-50: 180 25% 96%; /* Very light teal */
+  --heroui-secondary-100: 180 30% 92%; /* Light teal */
+  --heroui-secondary-200: 180 35% 84%; /* Lighter teal */
+  --heroui-secondary-300: 180 40% 76%; /* Light-medium teal */
+  --heroui-secondary-400: 180 45% 68%; /* Medium teal */
+  --heroui-secondary-500: 180 50% 60%; /* Base subtle teal */
+  --heroui-secondary-600: 180 55% 52%; /* Medium-dark teal */
+  --heroui-secondary-700: 180 60% 44%; /* Dark teal */
+  --heroui-secondary-800: 180 65% 36%; /* Darker teal */
+  --heroui-secondary-900: 180 70% 28%; /* Darkest teal */
+  --heroui-secondary-foreground: 0 0% 100%; /* White text on teal */
+  --heroui-secondary: 180 55% 55%; /* Main secondary color - Subtle but visible teal */
+}
+
+/* Dark theme secondary color override - Properly saturated teal for visibility */
+.dark,
+[data-theme="dark"] {
+  --heroui-secondary-50: 180 70% 28%; /* Darkest teal */
+  --heroui-secondary-100: 180 65% 36%; /* Darker teal */
+  --heroui-secondary-200: 180 60% 44%; /* Dark teal */
+  --heroui-secondary-300: 180 55% 52%; /* Medium-dark teal */
+  --heroui-secondary-400: 180 50% 60%; /* Base teal */
+  --heroui-secondary-500: 180 45% 68%; /* Medium teal */
+  --heroui-secondary-600: 180 40% 76%; /* Light-medium teal */
+  --heroui-secondary-700: 180 35% 84%; /* Lighter teal */
+  --heroui-secondary-800: 180 30% 92%; /* Light teal */
+  --heroui-secondary-900: 180 25% 96%; /* Very light teal */
+  --heroui-secondary-foreground: 0 0% 100%; /* White text on teal */
+  --heroui-secondary: 180 65% 50%; /* Main secondary color - More saturated for dark mode visibility */
+
+  /* Dark mode bubble colors - diverse and subtly more visible */
+  --bubble-color-1: hsl(var(--heroui-primary-400) / 0.15); /* Blue */
+  --bubble-color-2: hsl(var(--heroui-secondary-400) / 0.13); /* Teal */
+  --bubble-color-3: hsl(280 70% 75% / 0.12); /* Violet */
+  --bubble-color-4: hsl(320 80% 80% / 0.11); /* Magenta */
+  --bubble-color-5: hsl(180 90% 80% / 0.09); /* Cyan */
+  --bubble-color-6: hsl(260 60% 70% / 0.1); /* Purple */
+  --bubble-interactive: hsl(var(--heroui-primary-300) / 0.1);
+}
+
+/* Global font configuration */
+* {
+  font-family:
+    var(--font-ubuntu),
+    "Ubuntu",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    var(--font-ubuntu),
+    "Ubuntu",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Monospace font for code elements */
+code,
+pre,
+kbd,
+samp {
+  font-family:
+    var(--font-ubuntu-mono), "Ubuntu Mono", ui-monospace, SFMono-Regular,
+    "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* ========================================
+   ANIMATION KEYFRAMES
+   ======================================== */
+
+/* Gradient animations */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient-rotate {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes gradient-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradient-wave {
+  0% {
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+  25% {
+    background-position: 50% 25%;
+    transform: scale(1.02);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: scale(1);
+  }
+  75% {
+    background-position: 50% 75%;
+    transform: scale(0.98);
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradient-breathe {
+  0%,
+  100% {
+    background-size: 100% 100%;
+    opacity: 1;
+  }
+  50% {
+    background-size: 120% 120%;
+    opacity: 0.9;
+  }
+}
+
+@keyframes gradient-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Animated gradient text keyframes (compatible with external components) */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Existing animations */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appear-zoom {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bubble background animations - subtle and organic */
+@keyframes bubble-float-vertical {
+  0% {
+    transform: translateY(-30%);
+  }
+  50% {
+    transform: translateY(30%);
+  }
+  100% {
+    transform: translateY(-30%);
+  }
+}
+
+@keyframes bubble-float-circular {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bubble-float-horizontal {
+  0% {
+    transform: translateX(-30%) translateY(-5%);
+  }
+  50% {
+    transform: translateX(30%) translateY(5%);
+  }
+  100% {
+    transform: translateX(-30%) translateY(-5%);
+  }
+}
+
+/* Removed complex animations for better performance */
+
+/* Animation classes */
+.animate-appear {
+  animation: appear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-appear-zoom {
+  animation: appear-zoom 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Bubble animation classes */
+.animate-bubble-float-vertical {
+  animation: bubble-float-vertical 35s ease-in-out infinite;
+}
+
+.animate-bubble-float-circular {
+  animation: bubble-float-circular 25s ease-in-out infinite;
+}
+
+.animate-bubble-float-horizontal {
+  animation: bubble-float-horizontal 40s ease-in-out infinite;
+}
+
+/* Glass morphism utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ========================================
+   CENTRALIZED GRADIENT SYSTEM
+   ======================================== */
+
+/* Core gradient color variables - all gradients use these */
+@theme inline {
+  /* Primary gradient colors (theme-aware) */
+  --gradient-primary-start: hsl(var(--heroui-primary));
+  --gradient-primary-end: hsl(var(--heroui-secondary));
+
+  /* Secondary gradient colors */
+  --gradient-secondary-start: hsl(var(--heroui-secondary));
+  --gradient-secondary-end: hsl(var(--heroui-primary));
+
+  /* Multi-color gradient stops */
+  --gradient-multi-stop-1: #06b6d4; /* cyan-500 */
+  --gradient-multi-stop-2: #3b82f6; /* blue-500 */
+  --gradient-multi-stop-3: #6366f1; /* indigo-500 */
+  --gradient-multi-stop-4: #ec4899; /* pink-500 */
+
+  /* Accent gradient colors */
+  --gradient-accent-start: #9b99fe; /* light purple */
+  --gradient-accent-end: #2bc8b7; /* teal */
+
+  /* Glass/subtle gradient colors */
+  --gradient-glass-start: rgba(255, 255, 255, 0.1);
+  --gradient-glass-end: rgba(255, 255, 255, 0.05);
+
+  /* Bubble background gradient colors - diverse and subtly visible */
+  --bubble-color-1: hsl(var(--heroui-primary) / 0.18); /* Blue */
+  --bubble-color-2: hsl(var(--heroui-secondary) / 0.16); /* Teal */
+  --bubble-color-3: hsl(280 60% 65% / 0.14); /* Violet */
+  --bubble-color-4: hsl(320 70% 70% / 0.12); /* Magenta */
+  --bubble-color-5: hsl(180 80% 70% / 0.1); /* Cyan */
+  --bubble-color-6: hsl(260 50% 60% / 0.11); /* Purple */
+  --bubble-interactive: hsl(var(--heroui-primary-400) / 0.12);
+}
+
+/* Gradient definitions - animation-ready */
+@theme inline {
+  /* Primary gradients */
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--gradient-primary-start) 0%,
+    var(--gradient-primary-end) 100%
+  );
+  --gradient-primary-to-right: linear-gradient(
+    to right,
+    var(--gradient-primary-start) 0%,
+    var(--gradient-primary-end) 100%
+  );
+  --gradient-primary-to-bottom: linear-gradient(
+    to bottom,
+    var(--gradient-primary-start) 0%,
+    var(--gradient-primary-end) 100%
+  );
+
+  /* Secondary gradients */
+  --gradient-secondary: linear-gradient(
+    135deg,
+    var(--gradient-secondary-start) 0%,
+    var(--gradient-secondary-end) 100%
+  );
+  --gradient-secondary-to-right: linear-gradient(
+    to right,
+    var(--gradient-secondary-start) 0%,
+    var(--gradient-secondary-end) 100%
+  );
+
+  /* Multi-color gradients */
+  --gradient-multi: linear-gradient(
+    135deg,
+    var(--gradient-multi-stop-1) 0%,
+    var(--gradient-multi-stop-2) 25%,
+    var(--gradient-multi-stop-3) 75%,
+    var(--gradient-multi-stop-4) 100%
+  );
+  --gradient-multi-to-right: linear-gradient(
+    to right,
+    var(--gradient-multi-stop-1) 0%,
+    var(--gradient-multi-stop-2) 25%,
+    var(--gradient-multi-stop-3) 75%,
+    var(--gradient-multi-stop-4) 100%
+  );
+
+  /* Accent gradients */
+  --gradient-accent: linear-gradient(
+    135deg,
+    var(--gradient-accent-start) 0%,
+    var(--gradient-accent-end) 100%
+  );
+  --gradient-accent-to-right: linear-gradient(
+    to right,
+    var(--gradient-accent-start) 0%,
+    var(--gradient-accent-end) 100%
+  );
+
+  /* Glass gradients */
+  --gradient-glass: linear-gradient(
+    135deg,
+    var(--gradient-glass-start) 0%,
+    var(--gradient-glass-end) 100%
+  );
+
+  /* Radial gradients */
+  --gradient-radial-primary: radial-gradient(
+    circle,
+    var(--gradient-primary-start) 0%,
+    var(--gradient-primary-end) 100%
+  );
+  --gradient-radial-accent: radial-gradient(
+    circle,
+    var(--gradient-accent-start) 0%,
+    var(--gradient-accent-end) 100%
+  );
+}
+
+/* ========================================
+   GRADIENT UTILITY CLASSES
+   ======================================== */
+
+/* Text gradients */
+.gradient-text {
+  background: var(--gradient-multi);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Background gradients */
+.gradient-bg-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-bg-secondary {
+  background: var(--gradient-secondary);
+}
+
+.gradient-bg-multi {
+  background: var(--gradient-multi);
+}
+
+.gradient-bg-accent {
+  background: var(--gradient-accent);
+}
+
+.gradient-bg-glass {
+  background: var(--gradient-glass);
+}
+
+/* Border gradients */
+.gradient-border-primary {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--heroui-background), var(--heroui-background))
+      padding-box,
+    var(--gradient-primary) border-box;
+}
+
+.gradient-border-accent {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--heroui-background), var(--heroui-background))
+      padding-box,
+    var(--gradient-accent) border-box;
+}
+
+/* Animation-ready gradient classes */
+.gradient-animated {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.gradient-animated-fast {
+  background-size: 200% 200%;
+  animation: gradient-shift 1.5s ease infinite;
+}
+
+.gradient-animated-slow {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.gradient-animated-rotate {
+  background-size: 200% 200%;
+  animation: gradient-rotate 4s ease-in-out infinite;
+}
+
+.gradient-animated-pulse {
+  animation: gradient-pulse 2s ease-in-out infinite;
+}
+
+.gradient-animated-wave {
+  background-size: 200% 200%;
+  animation: gradient-wave 4s ease-in-out infinite;
+}
+
+.gradient-animated-breathe {
+  animation: gradient-breathe 3s ease-in-out infinite;
+}
+
+.gradient-animated-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--gradient-primary-start) 0%,
+    var(--gradient-primary-end) 50%,
+    var(--gradient-primary-start) 100%
+  );
+  background-size: 200% 100%;
+  animation: gradient-shimmer 2s ease-in-out infinite;
+}
+
+/* Animated gradient text utility (for external components) */
+.animate-gradient {
+  background-size: 300% 100%;
+  animation: gradient var(--animation-duration, 8s) linear infinite;
+}
+
+/* ========================================
+   ADVANCED ANIMATION COMBINATIONS
+   ======================================== */
+
+/* Hover-triggered animations */
+.gradient-hover-shift:hover {
+  background-size: 200% 200%;
+  animation: gradient-shift 1s ease infinite;
+}
+
+.gradient-hover-pulse:hover {
+  animation: gradient-pulse 1s ease-in-out infinite;
+}
+
+.gradient-hover-wave:hover {
+  background-size: 200% 200%;
+  animation: gradient-wave 2s ease-in-out infinite;
+}
+
+/* Focus-triggered animations for accessibility */
+.gradient-focus-shift:focus {
+  background-size: 200% 200%;
+  animation: gradient-shift 1s ease infinite;
+  outline: 2px solid transparent;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-animated,
+  .gradient-animated-fast,
+  .gradient-animated-slow,
+  .gradient-animated-rotate,
+  .gradient-animated-pulse,
+  .gradient-animated-wave,
+  .gradient-animated-breathe,
+  .gradient-animated-shimmer,
+  .gradient-hover-shift:hover,
+  .gradient-hover-pulse:hover,
+  .gradient-hover-wave:hover,
+  .gradient-focus-shift:focus {
+    animation: none;
+    background-size: 100% 100%;
+  }
+}
+
+/* Performance optimizations */
+.gradient-animated,
+.gradient-animated-fast,
+.gradient-animated-slow,
+.gradient-animated-rotate,
+.gradient-animated-wave,
+.gradient-animated-breathe {
+  will-change: background-position, transform;
+}
+
+.gradient-animated-shimmer {
+  will-change: background-position;
+}
+
+/* ========================================
+   TAILWIND-COMPATIBLE UTILITIES
+   ======================================== */
+
+/* Gradient background utilities for Tailwind */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.bg-gradient-multi {
+  background: var(--gradient-multi);
+}
+
+.bg-gradient-glass {
+  background: var(--gradient-glass);
+}
+
+/* Gradient text utilities for Tailwind */
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-multi {
+  background: var(--gradient-multi);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   RESPONSIVE GRADIENT UTILITIES
+   ======================================== */
+
+/* Mobile-first gradient utilities */
+@media (max-width: 640px) {
+  .gradient-mobile-simple {
+    background: var(--gradient-primary-start);
+  }
+}
+
+@media (min-width: 641px) {
+  .gradient-mobile-simple {
+    background: var(--gradient-primary);
+  }
+}
+
+/* Dark mode gradient adjustments */
+.dark .gradient-dark-enhanced {
+  --gradient-primary-start: hsl(var(--heroui-primary-400));
+  --gradient-primary-end: hsl(var(--heroui-secondary-400));
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .gradient-text-primary,
+  .text-gradient-primary {
+    background: hsl(var(--heroui-foreground));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Utility classes for consistent spacing and styling */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/* Focus styles consistent with HeroUI */
+.focus-visible {
+  outline: 2px solid hsl(var(--heroui-ring));
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--heroui-muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--heroui-muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--heroui-muted-foreground) / 0.5);
 }

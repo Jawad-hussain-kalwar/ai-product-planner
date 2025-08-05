@@ -91,7 +91,7 @@ const ProblemSection = () => {
   }, []);
 
   return (
-    <section className="py-20 px-4 pt-20 bg-background text-foreground">
+    <section className="py-20 px-4 pt-20">
       <div className="container mx-auto max-w-7xl">
         <div ref={containerRef} style={{ minHeight }}>
           <div className="grid md:grid-cols-2 md:gap-8 xl:gap-12">

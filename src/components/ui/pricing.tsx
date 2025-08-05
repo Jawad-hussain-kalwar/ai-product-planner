@@ -43,7 +43,7 @@ export function Pricing({
 }: PricingProps) {
   const [isMonthly, setIsMonthly] = useState(true);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const switchRef = useRef<HTMLButtonElement>(null);
+  const switchRef = useRef<HTMLInputElement>(null);
 
   const handleToggle = (checked: boolean) => {
     setIsMonthly(!checked);
@@ -88,7 +88,7 @@ export function Pricing({
         <span className="font-semibold">Monthly</span>
         <Label className="relative inline-flex items-center cursor-pointer">
           <Switch
-            ref={switchRef as React.RefObject<HTMLButtonElement>}
+            ref={switchRef}
             isSelected={!isMonthly}
             onValueChange={handleToggle}
             size="lg"

@@ -121,5 +121,7 @@ export { User, type UserProps } from "@heroui/user";
 
 // Custom components
 export { BentoCard, BentoGrid } from "./bento-grid";
+export { Label } from "./label";
+export { Pricing } from "./pricing";
 
 // All other components are from HeroUI

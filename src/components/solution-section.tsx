@@ -1,4 +1,5 @@
 "use client";
+import SolutionFlow from "@/components/ui/solution-flow-diagram";
 
 export function SolutionSection() {
   return (
@@ -11,6 +12,9 @@ export function SolutionSection() {
           One paragraph + simple graphic or short looping video gif. Acts as the
           bridge to deeper detail.
         </p>
+        <div className="flex justify-center mt-12">
+          <SolutionFlow />
+        </div>
       </div>
     </section>
   );

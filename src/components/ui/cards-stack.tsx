@@ -9,6 +9,7 @@ interface CardStickyProps extends HTMLMotionProps<"div"> {
   index: number;
   incrementY?: number;
   incrementZ?: number;
+  startOffset?: number;
 }
 
 const ContainerScroll = React.forwardRef<
@@ -34,6 +35,7 @@ const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
       index,
       incrementY = 10,
       incrementZ = 10,
+      startOffset = 0,
       children,
       className,
       style,
@@ -41,7 +43,7 @@ const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
     },
     ref
   ) => {
-    const y = index * incrementY;
+    const offsetY = startOffset + index * incrementY;
     const z = index * incrementZ;
 
     return (
@@ -49,7 +51,8 @@ const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
         ref={ref}
         layout="position"
         style={{
-          top: y,
+          top: "30%",
+          transform: `translateY(calc(-50% + ${offsetY}px))`,
           z,
           backfaceVisibility: "hidden",
           ...style,

@@ -119,4 +119,7 @@ export { Kbd, type KbdProps } from "@heroui/kbd";
 
 export { User, type UserProps } from "@heroui/user";
 
-// All components are now from HeroUI - no custom components needed
+// Custom components
+export { BentoCard, BentoGrid } from "./bento-grid";
+
+// All other components are from HeroUI

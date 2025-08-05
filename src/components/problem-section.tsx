@@ -14,6 +14,8 @@
 // }
 
 import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack";
+import React, { useRef, useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 const ALL_PROBLEMS = [
   {
@@ -46,15 +48,57 @@ const ALL_PROBLEMS = [
     description:
       "Your project documentation is all over the place - some features are well-documented, others barely have notes. This inconsistency makes it impossible to maintain momentum or onboard collaborators effectively.",
   },
+  {
+    id: "Problems -6",
+    title: "Lack of Clear Product Vision",
+    description:
+      "You have a great idea, but you're not sure how to turn it into a product that people will want. You need a clear, compelling vision of what your product is and how it will help people.",
+  },
 ];
 
 const ProblemSection = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [minHeight, setMinHeight] = useState<string>("500vh");
+  const [startOffset, setStartOffset] = useState<number>(0);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const measure = () => {
+      const firstCard = containerRef.current?.querySelector(
+        "[data-problem-card]"
+      ) as HTMLElement | null;
+      if (!firstCard) return;
+      const cardHeight = firstCard.offsetHeight;
+      const gapY = 32;
+
+      const leftColumn = containerRef.current?.querySelector(
+        "[data-left-column]"
+      ) as HTMLElement | null;
+      if (leftColumn) {
+        const leftRect = leftColumn.getBoundingClientRect();
+        const cardRect = firstCard.getBoundingClientRect();
+        const diff = leftRect.top - cardRect.top;
+        setStartOffset(diff);
+      }
+
+      const lastCardTop = (cardHeight + gapY) * (ALL_PROBLEMS.length - 1);
+      const totalNeeded = lastCardTop + cardHeight;
+      setMinHeight(`${totalNeeded}px`);
+    };
+
+    requestAnimationFrame(measure);
+  }, []);
+
   return (
     <section className="py-20 px-4 pt-20 bg-background text-foreground">
       <div className="container mx-auto max-w-7xl">
-        <div className="min-h-[500vh]">
+        <div ref={containerRef} style={{ minHeight }}>
           <div className="grid md:grid-cols-2 md:gap-8 xl:gap-12">
-            <div className="md:sticky md:top-1/2 md:-translate-y-1/2 md:h-fit md:py-12">
+            <div
+              data-left-column
+              className="md:sticky md:top-1/2 md:-translate-y-1/2 md:h-fit md:py-12 mt-32"
+            >
               <h5 className=" text-xs uppercase tracking-wide">
                 the challenges
               </h5>
@@ -69,12 +113,17 @@ const ProblemSection = () => {
                 for fast-moving teams who need to ship quickly.
               </p>
             </div>
-            <ContainerScroll className="space-y-8 py-12">
+            <ContainerScroll className="space-y-8">
               {ALL_PROBLEMS.map((phase, index) => (
                 <CardSticky
                   key={phase.id}
-                  index={index + 2}
-                  className="rounded-2xl border p-8 shadow-md backdrop-blur-md"
+                  data-problem-card
+                  index={index}
+                  startOffset={startOffset}
+                  className={cn(
+                    "rounded-2xl border p-8 shadow-md backdrop-blur-md",
+                    index === ALL_PROBLEMS.length - 1 && "invisible"
+                  )}
                 >
                   <div className="flex items-center justify-between gap-4">
                     <h2 className="my-6 text-2xl font-bold tracking-tighter">

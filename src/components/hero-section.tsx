@@ -109,18 +109,20 @@ export function HeroSection() {
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-3 animate-appear opacity-0 [animation-delay:450ms]">
             <Button
+              variant="flat"
               color="primary"
               size="lg"
               endContent={<ArrowRightIcon />}
-              className="font-semibold"
+              className="font-semibold bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20"
             >
               Start Planning
             </Button>
             <Button
-              variant="bordered"
+              variant="flat"
+              color="default"
               size="lg"
               startContent={<GitHubIcon />}
-              className="font-semibold"
+              className="font-semibold bg-default/10 hover:bg-default/20 text-default-700 border border-default/20"
             >
               View on GitHub
             </Button>

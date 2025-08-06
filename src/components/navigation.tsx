@@ -85,7 +85,13 @@ export function Navigation() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="/signup" variant="flat">
+          <Button
+            as={Link}
+            variant="flat"
+            color="primary"
+            href="/signup"
+            className="bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20"
+          >
             Sign Up
           </Button>
         </NavbarItem>

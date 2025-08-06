@@ -145,10 +145,10 @@ export function Pricing({
 
             <Card
               className={cn(
-                "h-full bg-content1/50 backdrop-blur-sm border-2 transition-all duration-300 p-6",
+                "h-full bg-content1/50 backdrop-blur-sm border border-divider/50 transition-all duration-300 p-6",
                 plan.isPopular
-                  ? "border-primary shadow-lg shadow-primary/25"
-                  : "border-divider hover:border-primary/50"
+                  ? "border-primary/70 hover:border-primary hover:shadow-lg"
+                  : "hover:bg-content1/70 hover:border-divider/70 hover:shadow-lg"
               )}
             >
               <CardHeader className="text-center pb-4 pt-0 flex flex-col">
@@ -210,10 +210,15 @@ export function Pricing({
                   <Button
                     as={Link}
                     href={plan.href}
+                    variant="flat"
                     color={plan.isPopular ? "primary" : "default"}
-                    variant={plan.isPopular ? "solid" : "bordered"}
-                    className="w-full font-semibold"
                     size="lg"
+                    className={cn(
+                      "w-full font-semibold",
+                      plan.isPopular
+                        ? "bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20"
+                        : "bg-default/10 hover:bg-default/20 text-default-700 border border-default/20"
+                    )}
                   >
                     {plan.buttonText}
                   </Button>

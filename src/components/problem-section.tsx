@@ -121,7 +121,7 @@ const ProblemSection = () => {
                   index={index}
                   startOffset={startOffset}
                   className={cn(
-                    "rounded-2xl border p-8 shadow-md backdrop-blur-md",
+                    "rounded-xl bg-content1/50 backdrop-blur-sm border border-divider/50 p-8 transition-all duration-300 hover:bg-content1/70 hover:border-divider/70 hover:shadow-lg",
                     index === ALL_PROBLEMS.length - 1 && "invisible"
                   )}
                 >

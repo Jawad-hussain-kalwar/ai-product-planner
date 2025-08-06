@@ -52,9 +52,9 @@ export function ThemeToggle() {
     return (
       <Button
         isIconOnly
-        variant="ghost"
+        variant="light"
         size="sm"
-        className="w-9 h-9"
+        className="w-9 h-9 rounded-full border-0 bg-transparent hover:bg-default/10"
         aria-label="Toggle theme"
       >
         <SunIcon />
@@ -66,9 +66,9 @@ export function ThemeToggle() {
     <Tooltip content={`Switch to ${theme === "light" ? "dark" : "light"} mode`}>
       <Button
         isIconOnly
-        variant="ghost"
+        variant="light"
         size="sm"
-        className="w-9 h-9"
+        className="w-9 h-9 rounded-full border-0 bg-transparent hover:bg-default/10"
         onPress={() => setTheme(theme === "light" ? "dark" : "light")}
         aria-label="Toggle theme"
       >

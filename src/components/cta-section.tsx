@@ -57,18 +57,20 @@ export function CTASection() {
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-20 mb-12 animate-appear opacity-0 [animation-delay:150ms]">
         <Button
+          variant="flat"
           color="primary"
           size="lg"
           endContent={<ArrowRightIcon />}
-          className="font-semibold text-lg px-8 py-6"
+          className="font-semibold text-lg px-8 py-6 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20"
         >
           Start Planning Now
         </Button>
         <Button
-          variant="bordered"
+          variant="flat"
+          color="default"
           size="lg"
           startContent={<GitHubIcon />}
-          className="font-semibold text-lg px-8 py-6"
+          className="font-semibold text-lg px-8 py-6 bg-default/10 hover:bg-default/20 text-default-700 border border-default/20"
         >
           Explore on GitHub
         </Button>

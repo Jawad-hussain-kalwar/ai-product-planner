@@ -34,43 +34,73 @@
 :root,
 [data-theme="light"] {
   /* Light theme secondary color override - Subtle Teal */
-  --heroui-secondary-50: 180 25% 96%; /* Very light teal */
-  --heroui-secondary-100: 180 30% 92%; /* Light teal */
-  --heroui-secondary-200: 180 35% 84%; /* Lighter teal */
-  --heroui-secondary-300: 180 40% 76%; /* Light-medium teal */
-  --heroui-secondary-400: 180 45% 68%; /* Medium teal */
-  --heroui-secondary-500: 180 50% 60%; /* Base subtle teal */
-  --heroui-secondary-600: 180 55% 52%; /* Medium-dark teal */
-  --heroui-secondary-700: 180 60% 44%; /* Dark teal */
-  --heroui-secondary-800: 180 65% 36%; /* Darker teal */
-  --heroui-secondary-900: 180 70% 28%; /* Darkest teal */
-  --heroui-secondary-foreground: 0 0% 100%; /* White text on teal */
-  --heroui-secondary: 180 55% 55%; /* Main secondary color - Subtle but visible teal */
+  --heroui-secondary-50: 180 25% 96%;
+  /* Very light teal */
+  --heroui-secondary-100: 180 30% 92%;
+  /* Light teal */
+  --heroui-secondary-200: 180 35% 84%;
+  /* Lighter teal */
+  --heroui-secondary-300: 180 40% 76%;
+  /* Light-medium teal */
+  --heroui-secondary-400: 180 45% 68%;
+  /* Medium teal */
+  --heroui-secondary-500: 180 50% 60%;
+  /* Base subtle teal */
+  --heroui-secondary-600: 180 55% 52%;
+  /* Medium-dark teal */
+  --heroui-secondary-700: 180 60% 44%;
+  /* Dark teal */
+  --heroui-secondary-800: 180 65% 36%;
+  /* Darker teal */
+  --heroui-secondary-900: 180 70% 28%;
+  /* Darkest teal */
+  --heroui-secondary-foreground: 0 0% 100%;
+  /* White text on teal */
+  --heroui-secondary: 180 55% 55%;
+  /* Main secondary color - Subtle but visible teal */
 }
 
 /* Dark theme secondary color override - Properly saturated teal for visibility */
 .dark,
 [data-theme="dark"] {
-  --heroui-secondary-50: 180 70% 28%; /* Darkest teal */
-  --heroui-secondary-100: 180 65% 36%; /* Darker teal */
-  --heroui-secondary-200: 180 60% 44%; /* Dark teal */
-  --heroui-secondary-300: 180 55% 52%; /* Medium-dark teal */
-  --heroui-secondary-400: 180 50% 60%; /* Base teal */
-  --heroui-secondary-500: 180 45% 68%; /* Medium teal */
-  --heroui-secondary-600: 180 40% 76%; /* Light-medium teal */
-  --heroui-secondary-700: 180 35% 84%; /* Lighter teal */
-  --heroui-secondary-800: 180 30% 92%; /* Light teal */
-  --heroui-secondary-900: 180 25% 96%; /* Very light teal */
-  --heroui-secondary-foreground: 0 0% 100%; /* White text on teal */
-  --heroui-secondary: 180 65% 50%; /* Main secondary color - More saturated for dark mode visibility */
+  --heroui-secondary-50: 180 70% 28%;
+  /* Darkest teal */
+  --heroui-secondary-100: 180 65% 36%;
+  /* Darker teal */
+  --heroui-secondary-200: 180 60% 44%;
+  /* Dark teal */
+  --heroui-secondary-300: 180 55% 52%;
+  /* Medium-dark teal */
+  --heroui-secondary-400: 180 50% 60%;
+  /* Base teal */
+  --heroui-secondary-500: 180 45% 68%;
+  /* Medium teal */
+  --heroui-secondary-600: 180 40% 76%;
+  /* Light-medium teal */
+  --heroui-secondary-700: 180 35% 84%;
+  /* Lighter teal */
+  --heroui-secondary-800: 180 30% 92%;
+  /* Light teal */
+  --heroui-secondary-900: 180 25% 96%;
+  /* Very light teal */
+  --heroui-secondary-foreground: 0 0% 100%;
+  /* White text on teal */
+  --heroui-secondary: 180 65% 50%;
+  /* Main secondary color - More saturated for dark mode visibility */
 
   /* Dark mode bubble colors - diverse and subtly more visible */
-  --bubble-color-1: hsl(var(--heroui-primary-400) / 0.15); /* Blue */
-  --bubble-color-2: hsl(var(--heroui-secondary-400) / 0.13); /* Teal */
-  --bubble-color-3: hsl(280 70% 75% / 0.12); /* Violet */
-  --bubble-color-4: hsl(320 80% 80% / 0.11); /* Magenta */
-  --bubble-color-5: hsl(180 90% 80% / 0.09); /* Cyan */
-  --bubble-color-6: hsl(260 60% 70% / 0.1); /* Purple */
+  --bubble-color-1: hsl(var(--heroui-primary-400) / 0.15);
+  /* Blue */
+  --bubble-color-2: hsl(var(--heroui-secondary-400) / 0.13);
+  /* Teal */
+  --bubble-color-3: hsl(280 70% 75% / 0.12);
+  /* Violet */
+  --bubble-color-4: hsl(320 80% 80% / 0.11);
+  /* Magenta */
+  --bubble-color-5: hsl(180 90% 80% / 0.09);
+  /* Cyan */
+  --bubble-color-6: hsl(260 60% 70% / 0.1);
+  /* Purple */
   --bubble-interactive: hsl(var(--heroui-primary-300) / 0.1);
 }
 
@@ -129,9 +159,11 @@ samp {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -141,15 +173,19 @@ samp {
   0% {
     background-position: 0% 0%;
   }
+
   25% {
     background-position: 100% 0%;
   }
+
   50% {
     background-position: 100% 100%;
   }
+
   75% {
     background-position: 0% 100%;
   }
+
   100% {
     background-position: 0% 0%;
   }
@@ -160,6 +196,7 @@ samp {
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.8;
   }
@@ -170,18 +207,22 @@ samp {
     background-position: 0% 50%;
     transform: scale(1);
   }
+
   25% {
     background-position: 50% 25%;
     transform: scale(1.02);
   }
+
   50% {
     background-position: 100% 50%;
     transform: scale(1);
   }
+
   75% {
     background-position: 50% 75%;
     transform: scale(0.98);
   }
+
   100% {
     background-position: 0% 50%;
     transform: scale(1);
@@ -194,6 +235,7 @@ samp {
     background-size: 100% 100%;
     opacity: 1;
   }
+
   50% {
     background-size: 120% 120%;
     opacity: 0.9;
@@ -204,6 +246,7 @@ samp {
   0% {
     background-position: -200% center;
   }
+
   100% {
     background-position: 200% center;
   }
@@ -214,9 +257,11 @@ samp {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -228,6 +273,7 @@ samp {
     opacity: 0;
     transform: translateY(1rem);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -239,6 +285,7 @@ samp {
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -249,6 +296,7 @@ samp {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -259,6 +307,7 @@ samp {
     opacity: 0;
     transform: translateY(2rem);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -270,9 +319,11 @@ samp {
   0% {
     transform: translateY(-30%);
   }
+
   50% {
     transform: translateY(30%);
   }
+
   100% {
     transform: translateY(-30%);
   }
@@ -282,9 +333,11 @@ samp {
   0% {
     transform: rotate(0deg);
   }
+
   50% {
     transform: rotate(180deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -294,9 +347,11 @@ samp {
   0% {
     transform: translateX(-30%) translateY(-5%);
   }
+
   50% {
     transform: translateX(30%) translateY(5%);
   }
+
   100% {
     transform: translateX(-30%) translateY(-5%);
   }
@@ -381,26 +436,38 @@ samp {
   --gradient-secondary-end: hsl(var(--heroui-primary));
 
   /* Multi-color gradient stops */
-  --gradient-multi-stop-1: #06b6d4; /* cyan-500 */
-  --gradient-multi-stop-2: #3b82f6; /* blue-500 */
-  --gradient-multi-stop-3: #6366f1; /* indigo-500 */
-  --gradient-multi-stop-4: #ec4899; /* pink-500 */
+  --gradient-multi-stop-1: #06b6d4;
+  /* cyan-500 */
+  --gradient-multi-stop-2: #3b82f6;
+  /* blue-500 */
+  --gradient-multi-stop-3: #6366f1;
+  /* indigo-500 */
+  --gradient-multi-stop-4: #ec4899;
+  /* pink-500 */
 
   /* Accent gradient colors */
-  --gradient-accent-start: #9b99fe; /* light purple */
-  --gradient-accent-end: #2bc8b7; /* teal */
+  --gradient-accent-start: #9b99fe;
+  /* light purple */
+  --gradient-accent-end: #2bc8b7;
+  /* teal */
 
   /* Glass/subtle gradient colors */
   --gradient-glass-start: rgba(255, 255, 255, 0.1);
   --gradient-glass-end: rgba(255, 255, 255, 0.05);
 
   /* Bubble background gradient colors - diverse and subtly visible */
-  --bubble-color-1: hsl(var(--heroui-primary) / 0.18); /* Blue */
-  --bubble-color-2: hsl(var(--heroui-secondary) / 0.16); /* Teal */
-  --bubble-color-3: hsl(280 60% 65% / 0.14); /* Violet */
-  --bubble-color-4: hsl(320 70% 70% / 0.12); /* Magenta */
-  --bubble-color-5: hsl(180 80% 70% / 0.1); /* Cyan */
-  --bubble-color-6: hsl(260 50% 60% / 0.11); /* Purple */
+  --bubble-color-1: hsl(var(--heroui-primary) / 0.18);
+  /* Blue */
+  --bubble-color-2: hsl(var(--heroui-secondary) / 0.16);
+  /* Teal */
+  --bubble-color-3: hsl(280 60% 65% / 0.14);
+  /* Violet */
+  --bubble-color-4: hsl(320 70% 70% / 0.12);
+  /* Magenta */
+  --bubble-color-5: hsl(180 80% 70% / 0.1);
+  /* Cyan */
+  --bubble-color-6: hsl(260 50% 60% / 0.11);
+  /* Purple */
   --bubble-interactive: hsl(var(--heroui-primary-400) / 0.12);
 }
 

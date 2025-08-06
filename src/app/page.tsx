@@ -4,14 +4,14 @@ import { ProblemSection } from "@/components/problem-section";
 import { SolutionSection } from "@/components/solution-section";
 import { FeaturesSection } from "@/components/features-section";
 import { HowItWorksSection } from "@/components/how-it-works-section";
-import { DemoSection } from "@/components/demo-section";
 import { UseCasesSection } from "@/components/use-cases-section";
 import { IntegrationsSection } from "@/components/integrations-section";
 import { PricingSection } from "@/components/pricing-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { SecuritySection } from "@/components/security-section";
-import { FAQSection } from "@/components/faq-section";
+import FAQSection from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
@@ -34,9 +34,6 @@ export default function Home() {
       {/* "How it works" (step-by-step) */}
       <HowItWorksSection />
 
-      {/* Live product demo or explainer video */}
-      <DemoSection />
-
       {/* Use-case / persona spotlight */}
       <UseCasesSection />
 
@@ -57,6 +54,9 @@ export default function Home() {
 
       {/* Final call-to-action */}
       <CTASection />
+
+      {/* Footer / quick links */}
+      <Footer />
     </main>
   );
 }

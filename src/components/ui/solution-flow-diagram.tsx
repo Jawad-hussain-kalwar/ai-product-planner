@@ -38,7 +38,7 @@ const SolutionFlow = ({
   return (
     <div
       className={cn(
-        "solution-flow-diagram relative flex h-[450px] w-full max-w-5xl flex-col items-center",
+        "solution-flow-diagram relative flex h-[30rem] w-full max-w-5xl flex-col items-center",
         className
       )}
     >
@@ -84,7 +84,13 @@ const SolutionFlow = ({
         height="100%"
         viewBox="0 0 200 120"
       >
-        <g ref={groupRef} stroke="currentColor" fill="none" strokeWidth="0.4">
+        <g
+          ref={groupRef}
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="0.6"
+          className="text-zinc-400 dark:text-zinc-600 opacity-90"
+        >
           <path d="M 18 10 v 20 q 0 5 5 5 h 72 q 5 0 5 5 v 25" />
           <path d="M 68 10 v 15 q 0 5 5 5 h 22 q 5 0 5 5 v 25" />
           <path d="M 132 10 v 15 q 0 5 -5 5 h -22 q -5 0 -5 5 v 25" />
@@ -128,22 +134,31 @@ const SolutionFlow = ({
           />
         </g>
         {/* Buttons */}
-        <g stroke="currentColor" fill="none" strokeWidth="0.4">
+        <g
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="1"
+          className="text-divider"
+        >
           {/* First Button */}
-          <g>
+          <g className="text-divider">
             <rect
-              fill="#18181B"
+              fill="currentColor"
+              fillOpacity="0.05"
+              stroke="currentColor"
+              strokeOpacity="0.8"
+              strokeWidth="0.5"
               x="0"
-              y="5"
+              y="0"
               width="36"
               height="10"
               rx="5"
             ></rect>
-            <DatabaseIcon x="4" y="7.5"></DatabaseIcon>
+            <DatabaseIcon x="4" y="2.5" stroke="currentColor"></DatabaseIcon>
             <text
               x="15"
-              y="12"
-              fill="white"
+              y="7"
+              fill="currentColor"
               stroke="none"
               fontSize="5"
               fontWeight="500"
@@ -152,20 +167,24 @@ const SolutionFlow = ({
             </text>
           </g>
           {/* Second Button */}
-          <g>
+          <g className="text-divider">
             <rect
-              fill="#18181B"
+              fill="currentColor"
+              fillOpacity="0.05"
+              stroke="currentColor"
+              strokeOpacity="0.8"
+              strokeWidth="0.5"
               x="50"
-              y="5"
+              y="0"
               width="36"
               height="10"
               rx="5"
             ></rect>
-            <DatabaseIcon x="54" y="7.5"></DatabaseIcon>
+            <DatabaseIcon x="54" y="2.5" stroke="currentColor"></DatabaseIcon>
             <text
               x="65"
-              y="12"
-              fill="white"
+              y="7"
+              fill="currentColor"
               stroke="none"
               fontSize="5"
               fontWeight="500"
@@ -174,20 +193,24 @@ const SolutionFlow = ({
             </text>
           </g>
           {/* Third Button */}
-          <g>
+          <g className="text-divider">
             <rect
-              fill="#18181B"
+              fill="currentColor"
+              fillOpacity="0.05"
+              stroke="currentColor"
+              strokeOpacity="0.8"
+              strokeWidth="0.5"
               x="114"
-              y="5"
+              y="0"
               width="36"
               height="10"
               rx="5"
             ></rect>
-            <DatabaseIcon x="118" y="7.5"></DatabaseIcon>
+            <DatabaseIcon x="118" y="2.5" stroke="currentColor"></DatabaseIcon>
             <text
               x="129"
-              y="12"
-              fill="white"
+              y="7"
+              fill="currentColor"
               stroke="none"
               fontSize="5"
               fontWeight="500"
@@ -196,20 +219,24 @@ const SolutionFlow = ({
             </text>
           </g>
           {/* Fourth Button */}
-          <g>
+          <g className="text-divider">
             <rect
-              fill="#18181B"
+              fill="currentColor"
+              fillOpacity="0.05"
+              stroke="currentColor"
+              strokeOpacity="0.8"
+              strokeWidth="0.5"
               x="164"
-              y="5"
+              y="0"
               width="36"
               height="10"
               rx="5"
             ></rect>
-            <DatabaseIcon x="168" y="7.5"></DatabaseIcon>
+            <DatabaseIcon x="168" y="2.5" stroke="currentColor"></DatabaseIcon>
             <text
               x="179"
-              y="12"
-              fill="white"
+              y="7"
+              fill="currentColor"
               stroke="none"
               fontSize="5"
               fontWeight="500"
@@ -259,59 +286,61 @@ const SolutionFlow = ({
         </defs>
       </svg>
       {/* Main Box */}
-      <div className="absolute bottom-6 flex w-full flex-col items-center">
+      <div className="absolute bottom-2 flex w-full flex-col items-center">
         {/* bottom shadow */}
         <div className="absolute -bottom-6 h-[150px] w-[62%] rounded-lg bg-accent/30" />
         {/* box title */}
-        <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border bg-[#101112] px-2 py-1 sm:-top-4 sm:py-1.5">
+        <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg bg-content1/50 backdrop-blur-sm border border-divider/50 px-2 py-1 sm:-top-4 sm:py-1.5">
           <SparklesIcon className="size-3" />
           <span className="ml-2 text-[10px]">
-            {title ? title : "Data exchange using a customized REST API"}
+            {title
+              ? title
+              : "Single AI Agent With Full Context of Your Project"}
           </span>
         </div>
         {/* box outter circle */}
-        <div className="absolute -bottom-12 z-30 grid h-[60px] w-[60px] place-items-center rounded-full border-t bg-[#141516] font-semibold text-xs">
+        <div className="absolute -bottom-8 z-30 grid h-[60px] w-[60px] place-items-center rounded-full bg-content1/50 backdrop-blur-sm border border-divider/50 font-semibold text-xs">
           {circleText ? circleText : "SVG"}
         </div>
         {/* box content */}
-        <div className="relative z-10 flex h-[225px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background shadow-md">
+        <div className="relative z-10 flex h-[225px] w-4/5 items-center justify-center overflow-hidden rounded-xl bg-content1/50 backdrop-blur-sm border border-divider/50">
           {/* Badges */}
-          <div className="absolute bottom-12 left-12 z-10 h-7 rounded-full bg-[#101112] px-3 text-xs border flex items-center gap-2 ">
+          <div className="absolute bottom-12 left-12 z-10 h-7 rounded-full bg-content1/50 backdrop-blur-sm border border-divider/50 px-3 text-xs flex items-center gap-2">
             <HeartHandshakeIcon className="size-4" />
-            <span>{buttonTexts?.first || "LegionDev"}</span>
+            <span>{buttonTexts?.first || "Kalu-RH"}</span>
           </div>
-          <div className="absolute right-16 z-10 hidden h-7 rounded-full bg-[#101112] px-3 text-xs sm:flex border items-center gap-2">
+          <div className="absolute right-16 z-10 hidden h-7 rounded-full bg-content1/50 backdrop-blur-sm border border-divider/50 px-3 text-xs sm:flex items-center gap-2">
             <Folder className="size-4" />
-            <span>{buttonTexts?.second || "v2_updates"}</span>
+            <span>{buttonTexts?.second || "todododoo"}</span>
           </div>
-          {/* Circles - Adjusted for 50% taller box (150px -> 225px) */}
+          {/* Circles - Centered on bottom border where SVG circle is */}
           <motion.div
-            className="absolute -bottom-20 h-[130px] w-[130px] rounded-full border-t bg-accent/5"
+            className="absolute -bottom-[50px] h-[100px] w-[100px] rounded-full border-t bg-accent/5"
             animate={{
               scale: [0.98, 1.02, 0.98, 1, 1, 1, 1, 1, 1],
             }}
             transition={{ duration: 2, repeat: Infinity }}
           />
           <motion.div
-            className="absolute -bottom-32 h-[175px] w-[175px] rounded-full border-t bg-accent/5"
+            className="absolute -bottom-[100px] h-[200px] w-[200px] rounded-full border-t bg-accent/5"
             animate={{
               scale: [1, 1, 1, 0.98, 1.02, 0.98, 1, 1, 1],
             }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 2.05, repeat: Infinity }}
           />
           <motion.div
-            className="absolute -bottom-[140px] h-[220px] w-[220px] rounded-full border-t bg-accent/5"
+            className="absolute -bottom-[150px] h-[300px] w-[300px] rounded-full border-t bg-accent/5"
             animate={{
               scale: [1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1, 1],
             }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 1.98, repeat: Infinity }}
           />
           <motion.div
-            className="absolute -bottom-[160px] h-[265px] w-[265px] rounded-full border-t bg-accent/5"
+            className="absolute -bottom-[200px] h-[400px] w-[400px] rounded-full border-t bg-accent/5"
             animate={{
               scale: [1, 1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1],
             }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 2.15, repeat: Infinity }}
           />
         </div>
       </div>
@@ -320,7 +349,15 @@ const SolutionFlow = ({
 };
 
 export default SolutionFlow;
-const DatabaseIcon = ({ x = "0", y = "0" }: { x: string; y: string }) => (
+const DatabaseIcon = ({
+  x = "0",
+  y = "0",
+  stroke = "currentColor",
+}: {
+  x: string;
+  y: string;
+  stroke?: string;
+}) => (
   <svg
     x={x}
     y={y}
@@ -329,8 +366,8 @@ const DatabaseIcon = ({ x = "0", y = "0" }: { x: string; y: string }) => (
     height="5"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="white"
-    strokeWidth="2"
+    stroke={stroke}
+    strokeWidth="0.2"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
